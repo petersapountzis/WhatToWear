@@ -24,7 +24,8 @@ async function getWeather(city) {
     humidity = data.main.humidity;
     wind = data.wind.speed;
     city_fromAPI = data.name;
-    console.log(city_fromAPI);
+
+    getGPTData();
   }
 }
 
@@ -51,6 +52,7 @@ async function getGPTData() {
       );
       const GPTData = await response.json();
       outputElement.textContent = GPTData.choices[0].message.content;
+      console.log(temp);
       console.log(GPTData);
     } catch (err) {
       console.error(err);
@@ -62,36 +64,7 @@ searchBtn.addEventListener("click", () => {
   console.log("clicked");
   const city = searchBox.value;
   getWeather(city);
-  
-  getGPTData();
 });
-
-// async function getGPTData() {
-//   const options = {
-//     method: "POST",
-//     headers: {
-//       "Authorization": `Bearer ${GPT_API_KEY}`,
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       model: "gpt-3.5-turbo",
-//       messages: [{ role: "user", content: "hello" }],
-//       max_tokens: 100
-//     })
-//   };
-
-//   try {
-//     const response = await fetch(
-//       "https://api.openai.com/v1/completions",
-//       options
-//     );
-//     const GPTData = await response.json();
-//     // outputElement.textContent = GPTData.choices[0].message.content;
-//     console.log(GPTData);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
 
 
 
