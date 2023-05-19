@@ -13,18 +13,18 @@
   border: 3px solid #eeaa0b;
 }
 .description {
-  font-size: 20px;
+  font-size: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #000;
   font-weight: 500;
+  font-size: 50;
   text-align: center;
   border: 3px solid #8ac007;
 }
 
 .search {
   width: 100%;
-  font-size: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,19 +54,25 @@
 }
 
 .response {
-  width: 100%;
   display: flex;
   background: #ebfffc;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  flex-wrap: wrap;
-  border: 3px solid #901414;
+  height: 100px;
+  border-radius: 30px;
 }
 
-.gpt {
+.GPT,
+.weather {
+  width: 100%;
   display: flex;
+  background: #ebfffc;
   flex-direction: row;
   border: 3px solid #901414;
+  height: 100px;
+  border-radius: 30px;
+  margin: auto;
 }
 
 .footer {
