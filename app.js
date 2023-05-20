@@ -8,6 +8,10 @@ const searchBtn = document.querySelector(".search button");
 const outputElement = document.querySelector(".GPT_response");
 let temp, conditions, humidity, wind, city_fromAPI;
 
+document.querySelector(".weather").style.display = "none";
+document.querySelector(".error").style.display = "none";
+document.querySelector(".response").style.display = "none";
+
 async function getWeather(city) {
 	const response = await fetch(
 		`${WEATHER_API_URL}${city}&appid=${WEATHER_API_KEY}&units=imperial`
@@ -29,12 +33,9 @@ async function getWeather(city) {
 
 		document.querySelector(".city").innerHTML = data.name;
 		document.querySelector(".temp").innerHTML = data.main.temp + "°f";
-		document.querySelector(".humidity").innerHTML =
-			data.main.humidity + "%";
-		document.querySelector(".wind").innerHTML = data.wind.speed + "mph";
 
 		if (data.weather[0].main == "Clouds") {
-			document.querySelector(".weather-icon").src = "images/cloud.png";
+			document.querySelector(".weather-icon").src = "images/clouds.png";
 		} else if (data.weather[0].main == "Rain") {
 			document.querySelector(".weather-icon").src = "images/rain.png";
 		} else if (data.weather[0].main == "Clear") {
@@ -47,6 +48,7 @@ async function getWeather(city) {
 
 		document.querySelector(".weather").style.display = "block";
 		document.querySelector(".error").style.display = "none";
+		document.querySelector(".response").style.display = "block";
 	}
 }
 
