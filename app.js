@@ -32,7 +32,8 @@ async function getWeather(city) {
 		getGPTData();
 
 		document.querySelector(".city").innerHTML = data.name;
-		document.querySelector(".temp").innerHTML = data.main.temp + "°f";
+		document.querySelector(".temp").innerHTML =
+			Math.round(data.main.temp) + "°F";
 
 		if (data.weather[0].main == "Clouds") {
 			document.querySelector(".weather-icon").src = "images/clouds.png";
@@ -65,7 +66,7 @@ async function getGPTData() {
 				{
 					role: "user",
 					content: `You are a wardrobe assistant. I am going to give you current weather data and you are going to give me a recommendation on what to wear. 
-        It is currently ${temp} degrees Fahrenheit and ${conditions} with ${humidity}% humidity and ${wind}mph wind speeds in ${city_fromAPI}. Be as specific as possible. Limit to 1-3 sentences. Include the data metrics I provided. What should I wear?`
+        It is currently ${temp} degrees Fahrenheit and ${conditions} with ${humidity}% humidity and ${wind}mph wind speeds in ${city_fromAPI}. Be as specific as possible. Limit to 1-3 sentences. Include the data metrics I provided excluding temp. What should I wear?`
 				}
 			],
 			max_tokens: 100,
